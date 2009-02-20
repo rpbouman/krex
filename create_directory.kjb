@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job>
+  <name>create_directory</name>
+    <description/>
+    <extended_description/>
+    <job_version/>
+    <job_status>0</job_status>
+  <directory>&#47;</directory>
+  <created_user>admin</created_user>
+  <created_date>2009&#47;02&#47;20 03:37:43.000</created_date>
+  <modified_user>admin</modified_user>
+  <modified_date>2009&#47;02&#47;20 03:37:43.000</modified_date>
+    <slaveservers>
+    </slaveservers>
+  <logconnection/>
+  <logtable/>
+   <use_batchid>Y</use_batchid>
+   <pass_batchid>N</pass_batchid>
+   <use_logfield>Y</use_logfield>
+   <shared_objects_file/>
+  <entries>
+    <entry>
+      <name>START</name>
+      <description>Special entries</description>
+      <type>SPECIAL</type>
+      <launch_in_parallel>Special entries</launch_in_parallel>
+      <start>Y</start>
+      <dummy>N</dummy>
+      <repeat>N</repeat>
+      <schedulerType>0</schedulerType>
+      <intervalSeconds>0</intervalSeconds>
+      <intervalMinutes>60</intervalMinutes>
+      <hour>12</hour>
+      <minutes>0</minutes>
+      <weekDay>1</weekDay>
+      <DayOfMonth>1</DayOfMonth>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>61</xloc>
+      <yloc>342</yloc>
+      </entry>
+    <entry>
+      <name>Create Job&#47;Trans Dir in REPO_TARGET_DIR</name>
+      <description>Create a folder</description>
+      <type>CREATE_FOLDER</type>
+      <launch_in_parallel>Create a folder</launch_in_parallel>
+      <foldername>${REPO_TARGET_DIR}&#47;${JOB_OR_TRANS_DIR}</foldername>
+      <fail_of_folder_exists>N</fail_of_folder_exists>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>404</xloc>
+      <yloc>342</yloc>
+      </entry>
+    <entry>
+      <name>set_job_or_trans_dir_variable</name>
+      <description>Transformation</description>
+      <type>TRANS</type>
+      <launch_in_parallel>Transformation</launch_in_parallel>
+      <filename>${Internal.Job.Filename.Directory}&#47;set_job_or_trans_dir_variable.ktr</filename>
+      <transname>set_job_or_trans_dir_variable</transname>
+      <directory>&#47;</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Nothing</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>196</xloc>
+      <yloc>342</yloc>
+      </entry>
+  </entries>
+  <hops>
+    <hop>
+      <from>START</from>
+      <to>set_job_or_trans_dir_variable</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>set_job_or_trans_dir_variable</from>
+      <to>Create Job&#47;Trans Dir in REPO_TARGET_DIR</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+  </hops>
+  <notepads>
+    <notepad>
+      <note>NAME:
+get_job_and_trans_directories
+
+PART OF:
+This job is part of export_repository_to_files. It is not meant to be run stand alone.
+
+PURPOSE:
+This job expects to be called for each row of the result of the previous job, 
+which is supposed to send it a result set containing a directory name. 
+The directory name is originally extracted from a repository export, 
+and this job is responsible for creating the directory on the file system 
+in order to store .ktr and .kjb files from the same repository export.
+
+The job has to resign to a bit of a hack before it can actually create the directory.
+The only way to parameterize the name of directory to create, the directory name 
+must be set in a variable. 
+
+Because the name of the directory arrives as a result from the calling job entry, 
+we first need to call the transformation set_job_or_trans_dir_variable to grab to argument.
+The transformation then sets that as the variable JOB_OR_TRANS_DIR. 
+Beyond that point this job can take over and use the variable to create the directory. 
+
+Ugly, but it works.</note>
+      <xloc>54</xloc>
+      <yloc>15</yloc>
+      <width>451</width>
+      <heigth>296</heigth>
+    </notepad>
+  </notepads>
+</job>

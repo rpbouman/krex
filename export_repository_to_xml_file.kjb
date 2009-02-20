@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job>
+  <name>export_repository_to_xml_file</name>
+    <description/>
+    <extended_description/>
+    <job_version/>
+    <job_status>0</job_status>
+  <directory>&#47;</directory>
+  <created_user>admin</created_user>
+  <created_date>2009&#47;02&#47;20 00:11:49.000</created_date>
+  <modified_user>admin</modified_user>
+  <modified_date>2009&#47;02&#47;20 00:11:49.000</modified_date>
+    <slaveservers>
+    </slaveservers>
+  <logconnection/>
+  <logtable/>
+   <use_batchid>Y</use_batchid>
+   <pass_batchid>N</pass_batchid>
+   <use_logfield>Y</use_logfield>
+   <shared_objects_file/>
+  <entries>
+    <entry>
+      <name>Export repository to XML</name>
+      <description>Export repository to XML file</description>
+      <type>EXPORT_REPOSITORY</type>
+      <launch_in_parallel>Export repository to XML file</launch_in_parallel>
+      <repositoryname>${PDI_REPO_TO_EXPORT}</repositoryname>
+      <username>${PDI_REPO_USER}</username>
+      <password>${PDI_REPO_PASSWORD}</password>
+      <targetfilename>${REPO_TARGET_DIR}&#47;pdi_repo_export.xml</targetfilename>
+      <iffileexists>if_file_exists_overwrite</iffileexists>
+      <export_type>export_all</export_type>
+      <directoryPath/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>Y</SpecifyFormat>
+      <date_time_format>yyyyMMddHHmmss</date_time_format>
+      <createfolder>Y</createfolder>
+      <newfolder>N</newfolder>
+      <add_result_filesname>Y</add_result_filesname>
+      <nr_errors_less_than>10</nr_errors_less_than>
+      <success_condition>success_if_no_errors</success_condition>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>191</xloc>
+      <yloc>232</yloc>
+      </entry>
+    <entry>
+      <name>START</name>
+      <description>Special entries</description>
+      <type>SPECIAL</type>
+      <launch_in_parallel>Special entries</launch_in_parallel>
+      <start>Y</start>
+      <dummy>N</dummy>
+      <repeat>N</repeat>
+      <schedulerType>0</schedulerType>
+      <intervalSeconds>0</intervalSeconds>
+      <intervalMinutes>60</intervalMinutes>
+      <hour>12</hour>
+      <minutes>0</minutes>
+      <weekDay>1</weekDay>
+      <DayOfMonth>1</DayOfMonth>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>39</xloc>
+      <yloc>232</yloc>
+      </entry>
+    <entry>
+      <name>Add filenames to result 1</name>
+      <description>Add filenames to result</description>
+      <type>ADD_RESULT_FILENAMES</type>
+      <launch_in_parallel>Add filenames to result</launch_in_parallel>
+      <arg_from_previous>N</arg_from_previous>
+      <include_subfolders>N</include_subfolders>
+      <delete_all_before>N</delete_all_before>
+      <fields>
+      </fields>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>363</xloc>
+      <yloc>232</yloc>
+      </entry>
+  </entries>
+  <hops>
+    <hop>
+      <from>START</from>
+      <to>Export repository to XML</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Export repository to XML</from>
+      <to>Add filenames to result 1</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+  </hops>
+  <notepads>
+    <notepad>
+      <note>NAME:
+export_repository_to_xml_file
+
+PART OF:
+This is part of export_repository_to_files. You should not run this job stand alone.
+
+PURPOSE:
+Export all objects in a PDI repository to an XML file.
+
+The variables PDI_REPO_TO_EXPORT, PDI_REPO_USER and PDI_REPO_PASSWORD are used 
+to connect to the repository.
+
+The file to which the objects are exported is called pdi_repo_export.xml
+The variable REPO_TARGET_DIR specifies the directory for this file.</note>
+      <xloc>27</xloc>
+      <yloc>18</yloc>
+      <width>510</width>
+      <heigth>184</heigth>
+    </notepad>
+    <notepad>
+      <note>BEWARE: bugs in this experimental step.
+See:
+http:&#47;&#47;jira.pentaho.com&#47;browse&#47;PDI-2101
+http:&#47;&#47;jira.pentaho.com&#47;browse&#47;PDI-2105
+</note>
+      <xloc>94</xloc>
+      <yloc>285</yloc>
+      <width>218</width>
+      <heigth>60</heigth>
+    </notepad>
+  </notepads>
+</job>
