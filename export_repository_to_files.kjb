@@ -10,20 +10,49 @@
   <created_date>2009&#47;02&#47;20 00:20:40.000</created_date>
   <modified_user>admin</modified_user>
   <modified_date>2009&#47;02&#47;20 00:20:40.000</modified_date>
+    <parameters>
+        <parameter>
+            <name>PDI_REPO_FOLDER</name>
+            <default_value>null</default_value>
+            <description>null</description>
+        </parameter>
+        <parameter>
+            <name>PDI_REPO_PASSWORD</name>
+            <default_value>null</default_value>
+            <description>null</description>
+        </parameter>
+        <parameter>
+            <name>PDI_REPO_TO_EXPORT</name>
+            <default_value>null</default_value>
+            <description>null</description>
+        </parameter>
+        <parameter>
+            <name>PDI_REPO_USER</name>
+            <default_value>null</default_value>
+            <description>null</description>
+        </parameter>
+        <parameter>
+            <name>REPO_TARGET_DIR</name>
+            <default_value>null</default_value>
+            <description>null</description>
+        </parameter>
+    </parameters>
     <slaveservers>
+         <slaveserver><name>cptlx007</name><hostname>cptlx007.cipal.be</hostname><port>10001</port><username>cluster</username><password>Encrypted 2be98afc86aa7f2e4cb1aa265cd86aac8</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>Y</master></slaveserver>
+         <slaveserver><name>master</name><hostname>oathena.cipal.be</hostname><port>10001</port><username>cluster</username><password>Encrypted 2be98afc86aa7f2e4cb1aa265cd86aac8</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>Y</master></slaveserver>
     </slaveservers>
   <logconnection/>
   <logtable/>
-   <use_batchid>Y</use_batchid>
+  <size_limit_lines/>
+   <use_batchid>N</use_batchid>
    <pass_batchid>N</pass_batchid>
-   <use_logfield>Y</use_logfield>
+   <use_logfield>N</use_logfield>
    <shared_objects_file/>
   <entries>
     <entry>
       <name>START</name>
       <description>Special entries</description>
       <type>SPECIAL</type>
-      <launch_in_parallel>Special entries</launch_in_parallel>
       <start>Y</start>
       <dummy>N</dummy>
       <repeat>N</repeat>
@@ -37,18 +66,17 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>354</xloc>
-      <yloc>11</yloc>
+      <xloc>40</xloc>
+      <yloc>370</yloc>
       </entry>
     <entry>
       <name>export_repository_to_xml_file</name>
       <description>Job</description>
       <type>JOB</type>
-      <launch_in_parallel>Job</launch_in_parallel>
       <filename>${Internal.Job.Filename.Directory}&#47;export_repository_to_xml_file.kjb</filename>
-      <jobname>export_repository_to_xml_file</jobname>
-      <directory>&#47;</directory>
+      <jobname/>
       <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
       <set_logfile>N</set_logfile>
       <logfile/>
@@ -59,18 +87,18 @@
       <slave_server_name/>
       <wait_until_finished>Y</wait_until_finished>
       <follow_abort_remote>N</follow_abort_remote>
-      <set_append_logfile>N</set_append_logfile>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>      <set_append_logfile>N</set_append_logfile>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>580</xloc>
-      <yloc>76</yloc>
+      <xloc>380</xloc>
+      <yloc>510</yloc>
       </entry>
     <entry>
       <name>export_repo_xml_to_files</name>
       <description>Transformation</description>
       <type>TRANS</type>
-      <launch_in_parallel>Transformation</launch_in_parallel>
       <filename>${Internal.Job.Filename.Directory}&#47;export_repo_xml_to_files.ktr</filename>
       <transname>export_repo_xml_to_files</transname>
       <directory>&#47;</directory>
@@ -89,20 +117,19 @@
       <set_append_logfile>N</set_append_logfile>
       <wait_until_finished>Y</wait_until_finished>
       <follow_abort_remote>N</follow_abort_remote>
-      <parallel>N</parallel>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>901</xloc>
-      <yloc>196</yloc>
+      <xloc>910</xloc>
+      <yloc>510</yloc>
       </entry>
     <entry>
       <name>get_job_and_trans_directories</name>
       <description>Transformation</description>
       <type>TRANS</type>
-      <launch_in_parallel>Transformation</launch_in_parallel>
       <filename>${Internal.Job.Filename.Directory}&#47;get_job_and_trans_directories.ktr</filename>
-      <transname>get_job_and_trans_directories</transname>
-      <directory>&#47;</directory>
+      <transname/>
       <arg_from_previous>Y</arg_from_previous>
       <exec_per_row>N</exec_per_row>
       <clear_rows>N</clear_rows>
@@ -118,21 +145,21 @@
       <set_append_logfile>N</set_append_logfile>
       <wait_until_finished>Y</wait_until_finished>
       <follow_abort_remote>N</follow_abort_remote>
-      <parallel>N</parallel>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>706</xloc>
-      <yloc>120</yloc>
+      <xloc>580</xloc>
+      <yloc>510</yloc>
       </entry>
     <entry>
       <name>create_directory</name>
       <description>Job</description>
       <type>JOB</type>
-      <launch_in_parallel>Job</launch_in_parallel>
       <filename>${Internal.Job.Filename.Directory}&#47;create_directory.kjb</filename>
-      <jobname>create_directory</jobname>
-      <directory>&#47;</directory>
+      <jobname/>
       <arg_from_previous>Y</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
       <exec_per_row>Y</exec_per_row>
       <set_logfile>N</set_logfile>
       <logfile/>
@@ -143,21 +170,21 @@
       <slave_server_name/>
       <wait_until_finished>Y</wait_until_finished>
       <follow_abort_remote>N</follow_abort_remote>
-      <set_append_logfile>N</set_append_logfile>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>      <set_append_logfile>N</set_append_logfile>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>809</xloc>
-      <yloc>160</yloc>
+      <xloc>760</xloc>
+      <yloc>510</yloc>
       </entry>
     <entry>
       <name>set_source_repo_and_target_directory</name>
-      <description>Transformation</description>
+      <description/>
       <type>TRANS</type>
-      <launch_in_parallel>Transformation</launch_in_parallel>
       <filename>${Internal.Job.Filename.Directory}&#47;set_source_repo_and_target_directory.ktr</filename>
-      <transname>set_source_repo_and_target_directory</transname>
-      <directory>&#47;</directory>
+      <transname/>
+      <directory/>
       <arg_from_previous>N</arg_from_previous>
       <exec_per_row>N</exec_per_row>
       <clear_rows>N</clear_rows>
@@ -167,29 +194,52 @@
       <logext/>
       <add_date>N</add_date>
       <add_time>N</add_time>
-      <loglevel>Nothing</loglevel>
+      <loglevel>Basic</loglevel>
       <cluster>N</cluster>
       <slave_server_name/>
       <set_append_logfile>N</set_append_logfile>
       <wait_until_finished>Y</wait_until_finished>
       <follow_abort_remote>N</follow_abort_remote>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>380</xloc>
+      <yloc>370</yloc>
+      </entry>
+    <entry>
+      <name>Target Dir Empty? </name>
+      <description/>
+      <type>EVAL</type>
+      <script>parent_job.getVariable(&quot;REPO_TARGET_DIR&quot;).equals(&quot;&quot;);</script>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>448</xloc>
-      <yloc>40</yloc>
+      <xloc>200</xloc>
+      <yloc>370</yloc>
+      </entry>
+    <entry>
+      <name>DUMMY</name>
+      <description/>
+      <type>SPECIAL</type>
+      <start>N</start>
+      <dummy>Y</dummy>
+      <repeat>N</repeat>
+      <schedulerType>0</schedulerType>
+      <intervalSeconds>0</intervalSeconds>
+      <intervalMinutes>60</intervalMinutes>
+      <hour>12</hour>
+      <minutes>0</minutes>
+      <weekDay>1</weekDay>
+      <DayOfMonth>1</DayOfMonth>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>200</xloc>
+      <yloc>510</yloc>
       </entry>
   </entries>
   <hops>
-    <hop>
-      <from>set_source_repo_and_target_directory</from>
-      <to>export_repository_to_xml_file</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
     <hop>
       <from>export_repository_to_xml_file</from>
       <to>get_job_and_trans_directories</to>
@@ -218,8 +268,44 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
+      <from>set_source_repo_and_target_directory</from>
+      <to>export_repository_to_xml_file</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
       <from>START</from>
+      <to>Target Dir Empty? </to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Target Dir Empty? </from>
       <to>set_source_repo_and_target_directory</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Target Dir Empty? </from>
+      <to>DUMMY</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>DUMMY</from>
+      <to>export_repository_to_xml_file</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -236,6 +322,9 @@ Roland Bouman
 http:&#47;&#47;rpbouman.blogspot.com&#47;
 Author of &quot;Building Pentaho Solutions&quot;, Wiley, due August 2009
 
+Bart Maertens, 26&#47;5&#47;2011
+Extra check to allow krex to be used in combination with cookbook. 
+
 DESCRIPTION:
 This job exports the specified repository 
 to a tree of directories, .kjb and .ktr files 
@@ -246,11 +335,13 @@ http:&#47;&#47;forums.pentaho.org&#47;showthread.php?t=68017
 
 LICENSE
 This software is LGPL.  
+
+
 </note>
-      <xloc>7</xloc>
-      <yloc>6</yloc>
-      <width>325</width>
-      <heigth>222</heigth>
+      <xloc>30</xloc>
+      <yloc>20</yloc>
+      <width>378</width>
+      <heigth>309</heigth>
     </notepad>
   </notepads>
 </job>
